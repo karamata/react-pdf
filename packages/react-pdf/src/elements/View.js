@@ -3,7 +3,7 @@ import { toRGB } from '../utils/colors';
 import { pdfObject, pdfStream } from '../utils/pdf';
 
 class View extends PDFEntry {
-  render() {
+  async render() {
     const { left, top, width, height } = this.getAbsoluteLayout();
     const { backgroundColor } = this.style;
 

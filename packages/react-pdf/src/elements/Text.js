@@ -18,7 +18,7 @@ class Text extends PDFEntry {
     this.children = null;
   }
 
-  render() {
+  async render() {
     const { fontSize = 18, color = 'black' } = this.style;
     const { left, top, height } = this.getAbsoluteLayout();
 

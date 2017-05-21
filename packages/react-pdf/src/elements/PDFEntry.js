@@ -88,15 +88,18 @@ class PDFEntry extends Base {
     };
   }
 
-  renderChildren() {
-    return this.children.map(child => child.render()).join('');
+  async renderChildren() {
+    const childRenders = await Promise.all(
+      this.children.map(child => child.render()),
+    );
+    return childRenders.join('');
   }
 
-  render(value) {
+  async render(value) {
     // Get current offset and increment it
     this.offset = this.root.addOffset(value.length);
 
-    return [value, this.renderChildren()].join('');
+    return [value, await this.renderChildren()].join('');
   }
 }
 

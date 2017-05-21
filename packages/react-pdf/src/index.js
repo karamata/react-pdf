@@ -10,22 +10,27 @@ const Page = 'PAGE';
 const Document = 'DOCUMENT';
 
 const pdf = input => {
-  function parse(input) {
+  async function parse(input) {
     return input.render();
   }
 
-  function toBlob() {
-    return new Blob([parse(input)], {
+  async function toBlob() {
+    const render = await parse(input);
+
+    return new Blob([render], {
       type: 'application/pdf',
     });
   }
 
-  function toBuffer() {
-    return new Buffer(parse(input));
+  async function toBuffer() {
+    const render = await parse(input);
+    return new Buffer(render);
   }
 
-  function toString() {
-    return parse(input);
+  async function toString() {
+    const render = await parse(input);
+
+    return render;
   }
 
   return {

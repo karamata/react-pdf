@@ -16,7 +16,7 @@ class Catalog extends PDFEntry {
     this.pages.appendChild(child);
   }
 
-  render() {
+  async render() {
     return super.render(
       pdfObject(this.id, {
         Type: '/Catalog',

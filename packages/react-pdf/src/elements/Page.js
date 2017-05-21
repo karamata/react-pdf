@@ -54,7 +54,7 @@ class Page extends PDFEntry {
     return `[${contents}]`;
   }
 
-  render() {
+  async render() {
     this.layout.calculateLayout();
     this.backgroundColor = this.createsBackgroundColor();
 
@@ -76,7 +76,7 @@ class Page extends PDFEntry {
       this.backgroundColor.render(),
       this.graphicState.render(),
       this.resources.render(),
-      this.renderChildren(),
+      await this.renderChildren(),
     ].join('');
   }
 }
